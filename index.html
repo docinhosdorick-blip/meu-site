@@ -413,6 +413,13 @@
     const heartBtn = document.getElementById('heartBtn');
     const musicPlayer = document.getElementById('musicPlayer');
     const audioPlayer = document.getElementById('audioPlayer');
+    audioPlayer.addEventListener("error", () => {
+    alert("Erro ao carregar o áudio");
+});
+
+audioPlayer.addEventListener("loadedmetadata", () => {
+    alert("Áudio carregado! Duração: " + audioPlayer.duration);
+});
     const playPauseBtn = document.getElementById('playPauseBtn');
     const progressBar = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
