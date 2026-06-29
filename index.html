@@ -413,13 +413,20 @@
     const heartBtn = document.getElementById('heartBtn');
     const musicPlayer = document.getElementById('musicPlayer');
     const audioPlayer = document.getElementById('audioPlayer');
-    audioPlayer.addEventListener("error", () => {
-    alert("Erro ao carregar o áudio");
-});
+    function activateMusic() {
+  musicPlayer.classList.add('active');
 
-audioPlayer.addEventListener("loadedmetadata", () => {
-    alert("Áudio carregado! Duração: " + audioPlayer.duration);
-});
+  audioPlayer.currentTime = 0;
+
+  audioPlayer.play()
+    .then(() => {
+      isPlaying = true;
+      showPauseIcon();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
     const playPauseBtn = document.getElementById('playPauseBtn');
     const progressBar = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
